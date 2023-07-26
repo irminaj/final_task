@@ -1,8 +1,7 @@
 import { Theme } from "./Theme";
 import GlobalCSS from "./globalStyles/GlobalStyles.style";
 import { Button } from "./components/button/Button";
-import { Input } from "./components/input/Input";
-import { Label } from "./components/label/Label";
+import { FormInput } from "./components/formInput/FormInput";
 
 const App = () => {
   return (
@@ -10,9 +9,8 @@ const App = () => {
       <Theme>
         <GlobalCSS />
         <h1>Hello</h1>
+        <FormInput placeholder={"Name"} text={"Name"} />
         <Button text="Submit" />
-        <Label text="Name" />
-        <Input placeholder="Name" />
       </Theme>
     </div>
   );
