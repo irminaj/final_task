@@ -20,7 +20,7 @@ export const UsersList = () => {
   return (
     <ul>
       {loadedUsers.map((user) => (
-        <User key={user.id} id={user.id} firstName={user.firstName} lastName={user.lastName} email={user.email} birthDate={user.birthDate} />
+        <User key={user._id} id={user._id} firstName={user.firstName} lastName={user.lastName} email={user.email} birthDate={user.birthDate} />
       ))}
     </ul>
   );

@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const UserModel = require("../models/user.js");
 
-users = [];
+// users = [];
 
 mongoose.connect("mongodb://localhost:27017/mongotest");
 
@@ -19,6 +19,12 @@ router.post("/", async (req, res) => {
   const newUser = new UserModel(user);
   await newUser.save();
   res.status(201).send(user);
+});
+
+router.delete("/:id", async (req, res) => {
+  const userId = req.params.id;
+  await UserModel.deleteOne({ _id: userId });
+  res.status(201).send(`User with id: ${userId} deleted`);
 });
 
 // router.get("/", async (req, res) => {
@@ -36,26 +42,26 @@ router.post("/", async (req, res) => {
 //   res.status(201).send(newUser);
 // });
 
-router.patch("/:id", async (req, res) => {
-  const userId = req.params.id;
-  const client = await new MongoClient("mongodb://localhost:27017").connect();
-  await client
-    .db("mongotest")
-    .collection("users")
-    .updateOne({ _id: new ObjectId(userId) }, { $set: req.body });
-  await client.close();
-  res.status(200).send(`User with id: ${userId} edited`);
-});
+// router.patch("/:id", async (req, res) => {
+//   const userId = req.params.id;
+//   const client = await new MongoClient("mongodb://localhost:27017").connect();
+//   await client
+//     .db("mongotest")
+//     .collection("users")
+//     .updateOne({ _id: new ObjectId(userId) }, { $set: req.body });
+//   await client.close();
+//   res.status(200).send(`User with id: ${userId} edited`);
+// });
 
-router.delete("/:id", async (req, res) => {
-  const userId = req.params.id;
-  const client = await new MongoClient("mongodb://localhost:27017").connect();
-  await client
-    .db("mongotest")
-    .collection("users")
-    .deleteOne({ _id: new ObjectId(userId) });
-  await client.close();
-  res.status(201).send(`User with id: ${userId} deleted`);
-});
+// router.delete("/:id", async (req, res) => {
+//   const userId = req.params.id;
+//   const client = await new MongoClient("mongodb://localhost:27017").connect();
+//   await client
+//     .db("mongotest")
+//     .collection("users")
+//     .deleteOne({ _id: new ObjectId(userId) });
+//   await client.close();
+//   res.status(201).send(`User with id: ${userId} deleted`);
+// });
 
 module.exports = router;
