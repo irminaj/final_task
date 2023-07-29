@@ -1,6 +1,7 @@
 import { Theme } from "./Theme";
 import GlobalCSS from "./globalStyles/GlobalStyles.style";
 import { Form } from "./features/form/Form";
+import { UsersList } from "./sections/users/UsersList";
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Theme>
         <GlobalCSS />
         <Form />
+        <UsersList />
       </Theme>
     </div>
   );

@@ -9,8 +9,9 @@ users = [];
 mongoose.connect("mongodb://localhost:27017/mongotest");
 
 router.get("/", async (req, res) => {
-  const users = await UserModel.find({});
-  res.send(users);
+  let users;
+  users = await UserModel.find({});
+  res.json({ users: users.map((user) => user.toObject()) });
 });
 
 router.post("/", async (req, res) => {
