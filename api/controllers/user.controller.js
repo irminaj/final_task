@@ -21,6 +21,12 @@ router.post("/", async (req, res) => {
   res.status(201).send(user);
 });
 
+router.patch("/:id", async (req, res) => {
+  const userId = req.params.id;
+  await UserModel.findOneAndUpdate({ _id: userId }, req.body);
+  res.status(200).send(`User with id: ${userId} edited`);
+});
+
 router.delete("/:id", async (req, res) => {
   const userId = req.params.id;
   await UserModel.deleteOne({ _id: userId });
