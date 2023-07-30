@@ -54,7 +54,7 @@ export const RegistrationForm = () => {
       <Input name={"firstName"} label={"First Name"} type={"text"} placeholder={"Harry"} value={values.firstName} onChange={handleChange} />
       <Input name={"lastName"} label={"Last Name"} id={"lastName"} type={"text"} placeholder={"Potter"} value={values.lastName} onChange={handleChange} />
       <Input name={"email"} label={"Email"} id={"email"} type={"email"} placeholder={"example@mail.com"} value={values.email} onChange={handleChange} />
-      <Input name={"birthDate"} label={"Birth Date"} id={"birthDate"} type={"date"} placeholder={"2000-12-20"} value={values.birthDate} onChange={handleChange} />
+      <Input name={"birthDate"} label={"Age"} id={"birthDate"} type={"number"} placeholder={20} value={values.birthDate} onChange={handleChange} />
       <Button text="Submit" type="submit" />
       <Link to={"/"}>
         <Button text={"Back"} />

@@ -23,7 +23,7 @@ export const UsersList = () => {
             <TableHeaderStyle>Name</TableHeaderStyle>
             <TableHeaderStyle>Last name</TableHeaderStyle>
             <TableHeaderStyle>Email</TableHeaderStyle>
-            <TableHeaderStyle>Birthday</TableHeaderStyle>
+            <TableHeaderStyle>Age</TableHeaderStyle>
             <TableHeaderStyle>Actions</TableHeaderStyle>
           </TableRowStyle>
           {loadedUsers.map((user) => (
