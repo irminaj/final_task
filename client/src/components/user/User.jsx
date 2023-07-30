@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../button/Button";
+import { EditLinkStyle } from "./User.style";
 
 export const User = (props) => {
   const deleteUser = (id) => {
@@ -19,8 +20,9 @@ export const User = (props) => {
         <p>{props.lastName}</p>
         <p>{props.email}</p>
         <p>{props.birthDate}</p>
+        <EditLinkStyle to={`/update/${props.id}`}>Edit</EditLinkStyle>
         <Button onClick={() => deleteUser(props.id)} text={"Delete"} />
-        <Button onClick={props.editAction} text={"Edit"} />
+        {/* <Button onClick={props.editAction} text={"Edit"} /> */}
       </div>
     </li>
   );

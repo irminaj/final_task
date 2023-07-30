@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const userId = req.params.id;
   let user = await UserModel.findById(userId);
-  res.status(201).send(user);
+  res.json(user);
 });
 
 router.post("/", async (req, res) => {
