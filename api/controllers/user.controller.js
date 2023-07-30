@@ -14,6 +14,12 @@ router.get("/", async (req, res) => {
   res.json({ users: users.map((user) => user.toObject()) });
 });
 
+router.get("/:id", async (req, res) => {
+  const userId = req.params.id;
+  let user = await UserModel.findById(userId);
+  res.status(201).send(user);
+});
+
 router.post("/", async (req, res) => {
   const user = req.body;
   const newUser = new UserModel(user);
