@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { User } from "../../components/user/User";
+import { Link } from "react-router-dom";
 
 export const UsersList = () => {
   const [loadedUsers, setLoadedUsers] = useState("");
@@ -18,7 +19,8 @@ export const UsersList = () => {
   // }
 
   return (
-    <>
+    <div>
+      <Link to={"/create"}>Add new User</Link>
       {loadedUsers.length > 0 ? (
         <ul>
           {loadedUsers.map((user) => (
@@ -28,6 +30,6 @@ export const UsersList = () => {
       ) : (
         <h2>No user found</h2>
       )}
-    </>
+    </div>
   );
 };

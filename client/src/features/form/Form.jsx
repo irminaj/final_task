@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Input } from "../../components/input/Input";
 import { Button } from "../../components/button/Button";
 import { FormStyle } from "./Form.style";
+import { useNavigate } from "react-router-dom";
 
 export const Form = () => {
   const [values, setValues] = useState({
@@ -10,6 +11,8 @@ export const Form = () => {
     email: "",
     birthDate: "",
   });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -29,10 +32,18 @@ export const Form = () => {
       },
     });
     const result = await response.json();
-    console.log(result);
+    if (!response.ok) {
+      setError(result.error);
+    }
+    if (response.ok) {
+      setError(null);
+      console.log(result);
+      navigate("/");
+    }
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
     submitUser();
     console.log(values);
   };
@@ -44,6 +55,7 @@ export const Form = () => {
       <Input name={"email"} label={"Email"} id={"email"} type={"email"} placeholder={"example@mail.com"} value={values.email} onChange={handleChange} />
       <Input name={"birthDate"} label={"Birth Date"} id={"birthDate"} type={"date"} placeholder={"2000-12-20"} value={values.birthDate} onChange={handleChange} />
       <Button text="Submit" type="submit" />
+      {error && <p>{error}</p>}
     </FormStyle>
   );
 };

@@ -1,9 +1,9 @@
 import { Theme } from "./Theme";
 import GlobalCSS from "./globalStyles/GlobalStyles.style";
 import { Form } from "./features/form/Form";
-import { UsersList } from "./sections/users/UsersList";
+import { UsersList } from "./pages/users/UsersList";
 import { Routes, Route } from "react-router-dom";
-import { UpdateForm } from "./sections/update/UpdateForm";
+import { UpdateForm } from "./pages/update/UpdateForm";
 
 const App = () => {
   return (

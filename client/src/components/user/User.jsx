@@ -10,7 +10,7 @@ export const User = (props) => {
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
-    window.location.reload(true);
+    // window.location.reload(true);
   };
 
   return (
