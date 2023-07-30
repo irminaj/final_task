@@ -1,9 +1,9 @@
 import { Theme } from "./Theme";
 import GlobalCSS from "./globalStyles/GlobalStyles.style";
-import { Form } from "./features/form/Form";
-import { UsersList } from "./pages/users/UsersList";
+import { RegistrationPage } from "./pages/registrationPage/RegistrationPage";
+import { EditPage } from "./pages/editPage/EditPage";
+import { Home } from "./pages/home/Home";
 import { Routes, Route } from "react-router-dom";
-import { UpdateForm } from "./pages/update/UpdateForm";
 
 const App = () => {
   return (
@@ -11,12 +11,10 @@ const App = () => {
       <Theme>
         <GlobalCSS />
         <Routes>
-          <Route path="/" element={<UsersList />} />
-          <Route path="/create" element={<Form />} />
-          <Route path="/update/:id" element={<UpdateForm />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/create" element={<RegistrationPage />} />
+          <Route path="/update/:id" element={<EditPage />} />
         </Routes>
-        {/* <Form />
-        <UsersList /> */}
       </Theme>
     </div>
   );

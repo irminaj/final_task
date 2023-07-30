@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Input } from "../../components/input/Input";
 import { Button } from "../../components/button/Button";
-import { FormStyle } from "./Form.style";
+import { FormStyle } from "./RegistrationForm.style";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export const Form = () => {
+export const RegistrationForm = () => {
   const [values, setValues] = useState({
     firstName: "",
     lastName: "",
@@ -55,6 +56,9 @@ export const Form = () => {
       <Input name={"email"} label={"Email"} id={"email"} type={"email"} placeholder={"example@mail.com"} value={values.email} onChange={handleChange} />
       <Input name={"birthDate"} label={"Birth Date"} id={"birthDate"} type={"date"} placeholder={"2000-12-20"} value={values.birthDate} onChange={handleChange} />
       <Button text="Submit" type="submit" />
+      <Link to={"/"}>
+        <Button text={"Back"} />
+      </Link>
       {error && <p>{error}</p>}
     </FormStyle>
   );

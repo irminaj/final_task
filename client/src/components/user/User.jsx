@@ -1,29 +1,31 @@
 import React from "react";
 import { Button } from "../button/Button";
-import { EditLinkStyle } from "./User.style";
+import { TableRowStyle, TableDataStyle, TableButtonStyle } from "./User.style";
+import { Link } from "react-router-dom";
 
 export const User = (props) => {
-  const deleteUser = (id) => {
-    fetch(`http://localhost:3000/users/${id}`, {
+  const deleteUser = async (id) => {
+    await fetch(`http://localhost:3000/users/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
-    // window.location.reload(true);
+    window.location.reload(true);
   };
 
   return (
-    <li id={props.id}>
-      <div>
-        <p>{props.firstName}</p>
-        <p>{props.lastName}</p>
-        <p>{props.email}</p>
-        <p>{props.birthDate}</p>
-        <EditLinkStyle to={`/update/${props.id}`}>Edit</EditLinkStyle>
+    <TableRowStyle id={props.id}>
+      <TableDataStyle>{props.firstName}</TableDataStyle>
+      <TableDataStyle>{props.lastName}</TableDataStyle>
+      <TableDataStyle>{props.email}</TableDataStyle>
+      <TableDataStyle>{props.birthDate}</TableDataStyle>
+      <TableButtonStyle>
+        <Link to={`/update/${props.id}`}>
+          <Button text={"Edit"} />
+        </Link>
         <Button onClick={() => deleteUser(props.id)} text={"Delete"} />
-        {/* <Button onClick={props.editAction} text={"Edit"} /> */}
-      </div>
-    </li>
+      </TableButtonStyle>
+    </TableRowStyle>
   );
 };

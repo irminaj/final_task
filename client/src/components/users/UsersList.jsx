@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { User } from "../../components/user/User";
 import { Link } from "react-router-dom";
+import { TableHeaderStyle, TableStyle, TableRowStyle, UsersTableTextStyle } from "./UsersList.style";
 
 export const UsersList = () => {
   const [loadedUsers, setLoadedUsers] = useState("");
@@ -14,21 +15,23 @@ export const UsersList = () => {
     sendRequest();
   }, []);
 
-  // if (loadedUsers.length === 0) {
-  //   return <h2>No users found</h2>;
-  // }
-
   return (
     <div>
-      <Link to={"/create"}>Add new User</Link>
       {loadedUsers.length > 0 ? (
-        <ul>
+        <TableStyle>
+          <TableRowStyle>
+            <TableHeaderStyle>Name</TableHeaderStyle>
+            <TableHeaderStyle>Last name</TableHeaderStyle>
+            <TableHeaderStyle>Email</TableHeaderStyle>
+            <TableHeaderStyle>Birthday</TableHeaderStyle>
+            <TableHeaderStyle>Actions</TableHeaderStyle>
+          </TableRowStyle>
           {loadedUsers.map((user) => (
             <User key={user._id} id={user._id} firstName={user.firstName} lastName={user.lastName} email={user.email} birthDate={user.birthDate} />
           ))}
-        </ul>
+        </TableStyle>
       ) : (
-        <h2>No user found</h2>
+        <UsersTableTextStyle>No user found</UsersTableTextStyle>
       )}
     </div>
   );

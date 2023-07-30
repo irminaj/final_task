@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Input } from "../../components/input/Input";
 import { FormStyle } from "./UpdateForm.style";
 import { Button } from "../../components/button/Button";
+import { Link } from "react-router-dom";
 
 export const UpdateForm = () => {
   const { id } = useParams();
@@ -65,6 +66,9 @@ export const UpdateForm = () => {
       <Input name={"email"} label={"Email"} id={"email"} type={"email"} placeholder={"example@mail.com"} value={values.email} onChange={handleChange} />
       <Input name={"birthDate"} label={"Birth Date"} id={"birthDate"} type={"date"} placeholder={"2000-12-20"} value={values.birthDate} onChange={handleChange} />
       <Button text="Update" type="submit" />
+      <Link to={"/"}>
+        <Button text={"Back"} />
+      </Link>
       {error && <p>{error}</p>}
     </FormStyle>
   );
