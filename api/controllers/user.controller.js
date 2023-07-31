@@ -33,6 +33,14 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res) => {
   const { firstName, lastName, email, birthDate } = req.body;
+
+  const exists = await UserModel.findOne({ email });
+
+  if (exists) {
+    res.status(404).json({ error: "Email is already in use" });
+    return;
+  }
+
   try {
     const newUser = await UserModel.create({ firstName, lastName, email, birthDate });
     res.status(201).send(newUser);
@@ -45,8 +53,14 @@ router.post("/", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   const userId = req.params.id;
   const { firstName, lastName, email, birthDate } = req.body;
+  const exists = await UserModel.findOne({ email });
   if (!firstName || !lastName || !email || !birthDate) {
     res.status(400).json({ error: "All fields must be filled" });
+    return;
+  }
+
+  if (exists) {
+    res.status(404).json({ error: "Email is already in use" });
     return;
   }
 

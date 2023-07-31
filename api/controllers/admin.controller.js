@@ -29,9 +29,10 @@ router.post("/signup", async (req, res) => {
   const exists = await AdminModel.findOne({ username });
 
   if (exists) {
-    res.status(404).send("Username is already in use");
+    res.status(404).send({ error: "Username is already in use" });
     return;
   }
+
   try {
     const admin = await AdminModel.create({ username: req.body.username, password: req.body.password });
     res.status(200).json(admin);
