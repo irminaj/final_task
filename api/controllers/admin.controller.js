@@ -19,7 +19,7 @@ router.post("/login", async (req, res) => {
     res.status(400).json({ error: "Incorrect username" });
     return;
   }
-  // const match = admin.password === req.password;
+
   if (admin.password !== req.body.password) {
     res.status(400).json({ error: "Password is incorrect" });
     return;
