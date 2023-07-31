@@ -15,13 +15,9 @@ router.post("/login", async (req, res) => {
   }
 
   const admin = await AdminModel.findOne({ username });
-  if (!admin) {
-    res.status(400).json({ error: "Incorrect username" });
-    return;
-  }
 
-  if (admin.password !== req.body.password) {
-    res.status(400).json({ error: "Password is incorrect" });
+  if (!admin || admin.password !== req.body.password) {
+    res.status(400).json({ error: "Incorrect username or password" });
     return;
   }
 
