@@ -48,7 +48,6 @@ export const UpdateForm = () => {
     }
     if (response.ok) {
       setError(null);
-      console.log(result);
       alert("User updated successfully!");
       navigate("/");
     }

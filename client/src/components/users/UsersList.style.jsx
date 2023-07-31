@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const TableStyle = styled.table`
-  width: 1200px;
+  width: 100%;
 `;
 
 export const TableRowStyle = styled.tr`

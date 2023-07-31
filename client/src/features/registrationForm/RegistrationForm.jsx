@@ -38,7 +38,6 @@ export const RegistrationForm = () => {
     }
     if (response.ok) {
       setError(null);
-      console.log(result);
       navigate("/");
     }
   };

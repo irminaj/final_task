@@ -26,3 +26,9 @@ export const MainHeadingWrapperStyle = styled.div`
   background-color: ${(props) => props.theme.colors.primary};
   margin-bottom: 20px;
 `;
+
+export const ButtonContainerStyle = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;

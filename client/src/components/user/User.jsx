@@ -9,7 +9,6 @@ export const User = (props) => {
       method: "DELETE",
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
       .catch((error) => console.error(error));
     window.location.reload(true);
   };
